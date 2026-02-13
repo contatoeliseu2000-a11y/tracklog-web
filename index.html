@@ -16,7 +16,6 @@
 <button onclick="logout()">Sair</button>
 
 <p id="status"></p>
-
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -28,13 +27,6 @@ import {
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-// COLE AQUI SUA CONFIG DO FIREBASE
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCbOut3LnCCdqUx7MrhlhzUg7sNCBByjZs",
   authDomain: "tracklog-sistema-bdd86.firebaseapp.com",
@@ -43,6 +35,51 @@ const firebaseConfig = {
   messagingSenderId: "323752809438",
   appId: "1:323752809438:web:d06cf3ff869fb18040834f"
 };
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.registrar = function() {
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+
+  createUserWithEmailAndPassword(auth, email, senha)
+    .then(() => {
+      document.getElementById("status").innerText = "Conta criada com sucesso!";
+    })
+    .catch(error => {
+      document.getElementById("status").innerText = error.message;
+    });
+}
+
+window.login = function() {
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+
+  signInWithEmailAndPassword(auth, email, senha)
+    .then(() => {
+      document.getElementById("status").innerText = "Login realizado!";
+    })
+    .catch(error => {
+      document.getElementById("status").innerText = error.message;
+    });
+}
+
+window.logout = function() {
+  signOut(auth);
+}
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    document.getElementById("status").innerText = "Usuário logado: " + user.email;
+  } else {
+    document.getElementById("status").innerText = "Nenhum usuário logado.";
+  }
+});
+
+</script>
+
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
