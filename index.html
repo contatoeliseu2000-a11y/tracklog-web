@@ -29,14 +29,23 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 // COLE AQUI SUA CONFIG DO FIREBASE
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_AUTH_DOMAIN",
-  projectId: "SEU_PROJECT_ID",
-  storageBucket: "SEU_STORAGE_BUCKET",
-  messagingSenderId: "SEU_SENDER_ID",
-  appId: "SEU_APP_ID"
+  apiKey: "AIzaSyCbOut3LnCCdqUx7MrhlhzUg7sNCBByjZs",
+  authDomain: "tracklog-sistema-bdd86.firebaseapp.com",
+  projectId: "tracklog-sistema-bdd86",
+  storageBucket: "tracklog-sistema-bdd86.firebasestorage.app",
+  messagingSenderId: "323752809438",
+  appId: "1:323752809438:web:d06cf3ff869fb18040834f"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
