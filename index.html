@@ -80,49 +80,7 @@ onAuthStateChanged(auth, (user) => {
 
 </script>
  
-  // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-window.registrar = function() {
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
-
-  createUserWithEmailAndPassword(auth, email, senha)
-    .then(() => {
-      document.getElementById("status").innerText = "Conta criada com sucesso!";
-    })
-    .catch(error => {
-      document.getElementById("status").innerText = error.message;
-    });
-}
-
-window.login = function() {
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
-
-  signInWithEmailAndPassword(auth, email, senha)
-    .then(() => {
-      document.getElementById("status").innerText = "Login realizado!";
-    })
-    .catch(error => {
-      document.getElementById("status").innerText = error.message;
-    });
-}
-
-window.logout = function() {
-  signOut(auth);
-}
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    document.getElementById("status").innerText = "Usuário logado: " + user.email;
-  } else {
-    document.getElementById("status").innerText = "Nenhum usuário logado.";
-  }
-});
+  
 
 </script>
 
